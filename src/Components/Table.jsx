@@ -13,6 +13,7 @@ export default function Table() {
   const [xChoice, setXchoice] = useState(false);
 
   const winner = checkWinner(steps);
+  let randomIndex;
   const click = (i) => {
     //setXchoice(!xChoice);
 
@@ -23,6 +24,7 @@ export default function Table() {
 
     // setSteps(steps);
     setSteps((steps) => [...steps]);
+    console.log(steps);
     setXchoice(true);
   };
 
@@ -35,22 +37,28 @@ export default function Table() {
         cell.push(i);
       }
     });
-    const randomIndex = randomIndexis();
+    randomIndex = randomIndexis(i);
 
+    console.log(cell);
     return cell[randomIndex];
   };
 
   function computer(i) {
     setXchoice(!xChoice);
-    if (winner) return;
+    const stepsCopy = [...steps];
+    if (winner || stepsCopy[i]) return;
 
-    const cel = randomChoice();
-    if (!steps[cel]) {
+    const cel = randomChoice(i);
+    console.log(steps[cel] === "", cel);
+    if (steps[cel] === "") {
       steps[cel] = "O";
-      //setSteps(steps);
-      setSteps((steps) => [...steps]);
-      setXchoice(false);
+    } else {
+      computer();
     }
+    setSteps((steps) => [...steps]);
+    console.log(steps);
+
+    setXchoice(false);
   }
   useEffect(() => {
     if (winner) return;
@@ -58,7 +66,6 @@ export default function Table() {
       computer();
     }
   }, [xChoice]);
-  console.log(steps);
 
   return (
     <>
@@ -72,6 +79,9 @@ export default function Table() {
           ></Square>
         ))}
       </div>
+      {/* <div>
+        <button onClick={computer}>Compas</button>
+      </div> */}
     </>
   );
 }
