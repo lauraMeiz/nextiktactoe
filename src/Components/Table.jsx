@@ -3,57 +3,62 @@ import Square from "./Square";
 import checkWinner from "../Common/checkWinner";
 import sleep from "../Common/sleep";
 // import rand from "../Common/rand";
+
+import randomIndexis from "../Common/randomIndexis";
+// import rand from "../Common/rand";
 // import sleep from "../Common/sleep";
 
 export default function Table() {
   const [steps, setSteps] = React.useState(Array(9).fill(""));
-  const [xChoice, setXchoice] = useState(true);
+  const [xChoice, setXchoice] = useState(false);
 
   const winner = checkWinner(steps);
   const click = (i) => {
-    setXchoice(!xChoice);
+    //setXchoice(!xChoice);
 
     const stepsCopy = [...steps];
     if (winner || stepsCopy[i]) return;
 
     steps[i] = "X";
 
-    setSteps(steps);
-    console.log(steps);
+    // setSteps(steps);
+    setSteps((steps) => [...steps]);
+    setXchoice(true);
   };
 
-  useEffect(() => {
-    if (winner) return;
-    if (!xChoice) {
-      computer();
-    }
-  }, [xChoice]);
-
-  function computer(i, j) {
-    setXchoice(!xChoice);
-    sleep(1000);
-
+  const randomChoice = (i) => {
+    let cell = [];
     const stepsCopy = [...steps];
-    const cell = [];
 
     stepsCopy.forEach((index, i) => {
       if (index === "") {
         cell.push(i);
-
-        return cell[i];
       }
     });
-    const randomIndex = Math.floor(Math.random() * 9);
+    const randomIndex = randomIndexis();
 
-    const cel = cell[randomIndex];
-    if (steps[cel] === "") {
+    return cell[randomIndex];
+  };
+
+  function computer(i) {
+    setXchoice(!xChoice);
+    if (winner) return;
+
+    const cel = randomChoice();
+    if (!steps[cel]) {
       steps[cel] = "O";
-
-      setSteps(steps);
-
-      console.log(steps[i], "---", cel, randomIndex);
+      //setSteps(steps);
+      setSteps((steps) => [...steps]);
+      setXchoice(false);
     }
   }
+  useEffect(() => {
+    if (winner) return;
+    if (xChoice) {
+      computer();
+    }
+  }, [xChoice]);
+  console.log(steps);
 
   return (
     <>
