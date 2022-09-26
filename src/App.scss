@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+.square-container {
+  width: 300px;
+  margin: 0 calc(50% - 150px);
+}
+.table {
+  background-color: red;
+}
+.square {
+  border: 1px solid #999;
+  float: left;
+  font-size: 40px;
+  height: 80px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 80px;
+}
