@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  font-family: "Courgette", cursive;
+  font-family: "Gowun Dodum", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Patrick Hand", cursive;
+  font-family: "Red Hat Display", sans-serif;
 }
 
 .App-logo {
@@ -28,20 +33,46 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 .square-container {
   width: 300px;
-  margin: 0 calc(50% - 150px);
+  margin: 5px calc(50% - 150px);
+  //background-color: #61dafb;
+  display: flex;
+  flex-direction: column;
+  .big-title {
+  }
+  .button {
+    padding: 10px 10px;
+    border-radius: 50%;
+    background-color: rgb(97, 37, 84);
+    color: white;
+    border: none;
+  }
+  .button:hover {
+    background-color: rgb(231, 154, 224);
+    color: rgb(32, 13, 29);
+    border: none;
+  }
+}
+.table-row {
+  width: 300px;
+  margin: 5px calc(50% - 150px);
 }
 .table {
   background-color: red;
+  margin-left: 20px;
+}
+.winner-history-row {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+}
+.winner-row {
+  width: 300px;
+  display: flex;
+}
+span {
+  font-size: 10px;
 }
 .square {
   border: 1px solid #999;
@@ -53,4 +84,23 @@
   padding: 0;
   text-align: center;
   width: 80px;
+}
+.winner-history {
+  background-color: beige;
+}
+
+.modal {
+  // background-color: rgb(32, 89, 138);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(147, 64, 139, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  flex-direction: column;
+  color: white;
 }

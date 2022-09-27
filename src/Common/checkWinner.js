@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function checkWinner(steps) {
   const combination = [
     [0, 1, 2],
@@ -9,6 +11,7 @@ export default function checkWinner(steps) {
     [0, 4, 8],
     [2, 4, 6],
   ];
+
   for (let i = 0; i < combination.length; i++) {
     const [a, b, c] = combination[i];
     if (steps[a] && steps[a] === steps[b] && steps[a] === steps[c]) {
