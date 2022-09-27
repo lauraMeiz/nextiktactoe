@@ -20,7 +20,7 @@ export default function Table() {
     const stepsCopy = [...steps];
     if (winner || stepsCopy[i]) return;
 
-    steps[i] = "X";
+    steps[i] = "🍭";
 
     // setSteps(steps);
     setSteps((steps) => [...steps]);
@@ -44,15 +44,16 @@ export default function Table() {
   };
 
   function computer(i) {
-    setXchoice(!xChoice);
+    //setXchoice(!xChoice);
     const stepsCopy = [...steps];
     if (winner || stepsCopy[i]) return;
 
     const cel = randomChoice(i);
     console.log(steps[cel] === "", cel);
     if (steps[cel] === "") {
-      steps[cel] = "O";
-    } else {
+      steps[cel] = "🍩";
+    }
+    if (steps.length !== 9) {
       computer();
     }
     setSteps((steps) => [...steps]);
@@ -67,6 +68,12 @@ export default function Table() {
     }
   }, [xChoice]);
 
+  function reset() {
+    setSteps(Array(9).fill(""));
+
+    setXchoice(false);
+  }
+
   return (
     <>
       <div className="table">
@@ -79,9 +86,9 @@ export default function Table() {
           ></Square>
         ))}
       </div>
-      {/* <div>
-        <button onClick={computer}>Compas</button>
-      </div> */}
+      <div>
+        <button onClick={reset}>Reset</button>
+      </div>
     </>
   );
 }
