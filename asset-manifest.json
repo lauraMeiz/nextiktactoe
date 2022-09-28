@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/nextiktactoe/static/css/main.181ceafd.css",
+    "main.js": "/nextiktactoe/static/js/main.eba46d71.js",
+    "static/js/787.624582bd.chunk.js": "/nextiktactoe/static/js/787.624582bd.chunk.js",
+    "static/media/candy-sweets.jpg": "/nextiktactoe/static/media/candy-sweets.01ed811ea75d7519dfd8.jpg",
+    "index.html": "/nextiktactoe/index.html",
+    "main.181ceafd.css.map": "/nextiktactoe/static/css/main.181ceafd.css.map",
+    "main.eba46d71.js.map": "/nextiktactoe/static/js/main.eba46d71.js.map",
+    "787.624582bd.chunk.js.map": "/nextiktactoe/static/js/787.624582bd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.181ceafd.css",
+    "static/js/main.eba46d71.js"
+  ]
+}
