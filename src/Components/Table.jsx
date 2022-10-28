@@ -10,6 +10,7 @@ export default function Table() {
   const [steps, setSteps] = React.useState(Array(9).fill(""));
   const [xChoice, setXchoice] = useState(false);
   const [modal, setModal] = useState(0);
+  const [clicked, setClicked] = useState(0);
 
   let winnerSave = localStorage.getItem("winner")
     ? JSON.parse(localStorage.getItem("winner"))
@@ -41,12 +42,14 @@ export default function Table() {
     const stepsCopy = [...steps];
     if (winner) return;
     if (stepsCopy[i]) return;
+    if (clicked === 4) return;
 
     steps[i] = "🍭";
 
     // setSteps(steps);
     setSteps((steps) => [...steps]);
-    console.log(steps);
+    setClicked((click) => (click += 1));
+    console.log(clicked === 4);
     setXchoice(true);
   };
 
@@ -61,7 +64,6 @@ export default function Table() {
     });
     randomIndex = randomIndexis(i);
 
-    console.log(cell);
     return cell[randomIndex];
   };
 
@@ -71,16 +73,15 @@ export default function Table() {
     if (winner || stepsCopy[i]) return;
 
     const cel = randomChoice(i);
-    console.log(steps[cel] === "", cel);
+
     if (!reset || steps[cel] === "") {
       steps[cel] = "🍩";
     } else {
       computer();
     }
-    console.log(reset);
+
     // }
     setSteps((steps) => [...steps]);
-    console.log(steps);
 
     setXchoice(false);
   }
@@ -95,6 +96,7 @@ export default function Table() {
     setSteps(Array(9).fill(""));
     setModal(0);
     setXchoice(false);
+    setClicked(0);
   };
 
   return (
